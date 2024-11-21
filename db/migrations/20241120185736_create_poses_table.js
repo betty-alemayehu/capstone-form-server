@@ -17,3 +17,6 @@ export const up = (knex) => {
 export const down = (knex) => {
   return knex.schema.dropTableIfExists("poses");
 };
+
+// If you delete a pose, all progressions referencing that pose will be deleted automatically due to the ON DELETE CASCADE in the progressions table.
+// No cascading logic is needed in the poses table itself.

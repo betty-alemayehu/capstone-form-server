@@ -15,3 +15,6 @@ export const up = (knex) => {
 export const down = (knex) => {
   return knex.schema.dropTableIfExists("users");
 };
+
+// If you delete a user, all associated rows in the progressions table will be removed automatically because of the ON DELETE CASCADE in the progressions table.
+// No cascading logic is needed in the users table itself.
