@@ -2,8 +2,9 @@ export const up = (knex) => {
   return knex.schema.createTable("poses", (table) => {
     table.increments("id").primary(); // Primary key
     table.string("english_name").notNullable();
-    table.string("sanskrit_name").nullable();
     table.string("sanskrit_name_adapted").nullable();
+    table.string("sanskrit_name").nullable();
+    table.string("translation_name").nullable();
     table.text("pose_description").notNullable();
     table.text("pose_benefits").nullable();
     table.string("url_svg").nullable();
