@@ -4,7 +4,11 @@ export const up = (knex) => {
     table.string("name").notNullable();
     table.string("email").unique().notNullable();
     table.string("password").notNullable();
-    table.timestamps(true, true); // Adds created_at and updated_at
+    table
+      .string("profile_picture", 255)
+      .nullable()
+      .comment("URL to user profile picture");
+    table.timestamps(true, true); // created_at and updated_at
   });
 };
 

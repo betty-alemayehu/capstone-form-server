@@ -8,8 +8,6 @@ export const getUserProgressions = async (userId) => {
 };
 
 export const updateProgression = async (id, status) => {
-  return await db("progressions")
-    .where({ id })
-    .update({ status })
-    .returning("*");
+  return await db("progressions").where({ id }).update({ status });
+  // .returning("*"); //doesn't exist in sql - how to return all?
 };

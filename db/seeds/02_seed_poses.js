@@ -3,6 +3,7 @@ export const seed = async (knex) => {
 
   await knex("poses").insert([
     {
+      id: 1,
       english_name: "Butterfly",
       sanskrit_name: "Baddha Koṇāsana",
       pose_description:
@@ -13,6 +14,7 @@ export const seed = async (knex) => {
       url_png: "https://example.com/butterfly.png",
     },
     {
+      id: 2,
       english_name: "Downward Dog",
       sanskrit_name: "Adho Mukha Svanasana",
       pose_description: "Begin on your hands and knees...",
