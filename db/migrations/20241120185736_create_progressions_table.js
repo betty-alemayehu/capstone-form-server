@@ -14,7 +14,6 @@ export const up = (knex) => {
       .inTable("poses")
       .onDelete("CASCADE");
     table.enum("status", ["In Progress", "Completed"]).defaultTo("In Progress");
-    table.text("custom_media").nullable();
     table.timestamps(true, true); // Adds created_at and updated_at
   });
 };
