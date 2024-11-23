@@ -7,7 +7,7 @@ export const getMediaByProgressionId = async (progressionId) => {
 
 // Add a new media record
 export const addMedia = async (mediaData) => {
-  const [newMedia] = await db("media").insert(mediaData).returning("*");
+  const [newMedia] = await db("media").insert(mediaData);
   return newMedia;
 };
 
