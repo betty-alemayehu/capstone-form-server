@@ -3,6 +3,7 @@ import {
   createUser,
   getUserByEmail,
   getUserById,
+  putUserById,
   deleteUserById,
 } from "../models/User.js";
 
@@ -92,18 +93,45 @@ export const fetchUserById = async (req, res) => {
   }
 };
 
+//PUT Update user by Id
+export const updateUserById = async (req, res) => {
+  const { id } = req.params; // Extract user ID from route parameter
+  const updates = req.body; // Extract fields to update from request body
+
+  if (!id) {
+    return res.status(400).json({ error: "User ID is required." });
+  }
+
+  try {
+    // Check if the user exists
+    const user = await getUserById(id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found." });
+    }
+
+    // Perform the update
+    const updatedUser = await putUserById(id, updates);
+
+    res.status(200).json({
+      message: `User with ID ${id} updated successfully.`,
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.error("Error updating user:", error.message);
+    res.status(500).json({ error: "Failed to update user." });
+  }
+};
+
 //DELETE user by ID logged in using params
 export const deleteUser = async (req, res) => {
   const { id } = req.params; // Get the ID from route parameters
 
   try {
     const deletedUser = await deleteUserById(id); // Call the model function
-    res
-      .status(200)
-      .json({
-        message: `User with ID ${id} deleted successfully.`,
-        user: deletedUser,
-      });
+    res.status(200).json({
+      message: `User with ID ${id} deleted successfully.`,
+      user: deletedUser,
+    });
   } catch (error) {
     console.error("Error deleting user:", error.message);
     if (error.message.includes("not found")) {

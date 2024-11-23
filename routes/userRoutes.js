@@ -4,6 +4,7 @@ import {
   loginUser,
   fetchAllUsers,
   fetchUserById,
+  updateUserById,
   deleteUser,
 } from "../controllers/userController.js";
 
@@ -18,6 +19,7 @@ router
 router
   .route("/:id")
   .get(fetchUserById) // GET /users/:id - Fetch a user by ID
+  .put(updateUserById) // PUT /users/:id - Update user details
   .delete(deleteUser); // DELETE /users/:id - Delete a user by ID
 
 // Login route (separate because it's not strictly resource-based)

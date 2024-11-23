@@ -2,7 +2,7 @@ import db from "../db/dbConfig.js";
 
 // GET all users
 export const getAllUsers = async () => {
-  return db("users").select(
+  return await db("users").select(
     "id",
     "name",
     "email",
@@ -24,13 +24,20 @@ export const getUserByEmail = async (email) => {
   return user;
 };
 
-// GET user by email
+// GET user by ID
 export const getUserById = async (id) => {
   const user = await db("users").where({ id }).first();
   return user;
 };
 
-// DELETE user by ID
+// PUT Update user by ID
+export const putUserById = async (id, updates) => {
+  await db("users").where({ id }).update(updates);
+  const updatedUser = await db("users").where({ id }).first();
+  return updatedUser;
+};
+
+// DELETE user by Id
 export const deleteUserById = async (id) => {
   const user = await db("users").where({ id }).first(); // Check if user exists
   if (!user) {
