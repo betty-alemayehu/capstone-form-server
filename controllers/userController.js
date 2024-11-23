@@ -1,3 +1,4 @@
+//userController.js
 import {
   getAllUsers,
   createUser,
@@ -6,6 +7,8 @@ import {
   putUserById,
   deleteUserById,
 } from "../models/User.js";
+
+import { getAllProgressions } from "../models/Progression.js";
 
 //REGISTER
 export const registerUser = async (req, res) => {
@@ -140,3 +143,5 @@ export const deleteUser = async (req, res) => {
     res.status(500).json({ error: "Failed to delete user." });
   }
 };
+
+//=====================================================
