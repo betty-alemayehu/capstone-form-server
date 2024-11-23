@@ -1,3 +1,4 @@
+//models/Pose.js
 import db from "../db/dbConfig.js";
 
 export const getAllPoses = async () => {

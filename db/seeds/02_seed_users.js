@@ -1,3 +1,4 @@
+//01_seed_users.js
 export const seed = async (knex) => {
   // Clear existing data
   await knex("users").del();
@@ -13,7 +14,7 @@ export const seed = async (knex) => {
     },
     {
       id: 2,
-      name: "Betty2 Alemayehu2",
+      name: "Joe Doe",
       email: "another@example.com",
       password: "securepasswordhash2",
       profile_picture: "https://example.com/uploads/profile2.jpg",

@@ -1,3 +1,4 @@
+//create_media_table.js
 export const up = (knex) => {
   return knex.schema.createTable("media", (table) => {
     table.increments("id").primary();

@@ -1,3 +1,4 @@
+//01_seed_poses.js
 export const seed = async (knex) => {
   await knex("poses").del(); // Clear existing data
 

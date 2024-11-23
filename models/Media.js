@@ -1,3 +1,4 @@
+//models/Media.js
 import db from "../db/dbConfig.js";
 
 // Get all media for a specific progression

@@ -1,3 +1,4 @@
+//create_users_table.js
 export const up = (knex) => {
   return knex.schema.createTable("users", (table) => {
     table.increments("id").primary(); // Primary key

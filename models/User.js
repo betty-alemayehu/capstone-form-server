@@ -1,3 +1,4 @@
+//models/User.js
 import db from "../db/dbConfig.js";
 
 // GET all users

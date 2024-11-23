@@ -1,3 +1,4 @@
+//models/Progression.js
 import db from "../db/dbConfig.js";
 
 export const getUserProgressions = async (userId) => {

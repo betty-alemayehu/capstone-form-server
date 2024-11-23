@@ -1,3 +1,4 @@
+//create_poses_table.js
 export const up = (knex) => {
   return knex.schema.createTable("poses", (table) => {
     table.increments("id").primary(); // Primary key
