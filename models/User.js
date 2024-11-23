@@ -32,8 +32,10 @@ export const getUserById = async (id) => {
 
 // DELETE user by ID
 export const deleteUserById = async (id) => {
-  console.log(`Executing DELETE query for user ID: ${id}`); // Debug log
-  const rowsDeleted = await db("users").where({ id }).del();
-  console.log(`Query result: Rows deleted: ${rowsDeleted}`); // Debug log
-  return rowsDeleted;
+  const user = await db("users").where({ id }).first(); // Check if user exists
+  if (!user) {
+    throw new Error(`User with ID ${id} not found.`); // Handle non-existent user
+  }
+  await db("users").where({ id }).del(); // Delete the user
+  return user; // Return the deleted user for confirmation
 };

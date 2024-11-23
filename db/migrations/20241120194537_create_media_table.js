@@ -16,3 +16,4 @@ export const up = (knex) => {
 export const down = (knex) => {
   return knex.schema.dropTableIfExists("media");
 };
+// If you delete a progression, all associated rows in the media table will be removed because of ON DELETE CASCADE.

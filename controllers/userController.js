@@ -94,29 +94,21 @@ export const fetchUserById = async (req, res) => {
 
 //DELETE user by ID logged in using params
 export const deleteUser = async (req, res) => {
-  const { id } = req.params; // Extract ID from route parameters
-
-  console.log(`Incoming DELETE request for user ID: ${id}`); // Debug log
-
-  if (!id) {
-    console.log("No ID provided"); // Debug log
-    return res.status(400).json({ error: "User ID is required." });
-  }
+  const { id } = req.params; // Get the ID from route parameters
 
   try {
-    console.log(`Attempting to delete user with ID: ${id}`); // Debug log
-    const rowsDeleted = await deleteUserById(id);
-    console.log(`Rows deleted: ${rowsDeleted}`); // Debug log
-
-    if (rowsDeleted === 0) {
-      console.log("User not found"); // Debug log
-      return res.status(404).json({ error: "User not found." });
-    }
-
-    console.log("User deleted successfully"); // Debug log
-    return res.status(200).json({ message: "User deleted successfully." });
+    const deletedUser = await deleteUserById(id); // Call the model function
+    res
+      .status(200)
+      .json({
+        message: `User with ID ${id} deleted successfully.`,
+        user: deletedUser,
+      });
   } catch (error) {
-    console.error("Error deleting user:", error.message); // Debug log
-    return res.status(500).json({ error: "Failed to delete user." });
+    console.error("Error deleting user:", error.message);
+    if (error.message.includes("not found")) {
+      return res.status(404).json({ error: error.message });
+    }
+    res.status(500).json({ error: "Failed to delete user." });
   }
 };

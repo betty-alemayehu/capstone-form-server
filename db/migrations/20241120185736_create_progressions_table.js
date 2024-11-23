@@ -21,3 +21,4 @@ export const up = (knex) => {
 export const down = (knex) => {
   return knex.schema.dropTableIfExists("progressions");
 };
+//If you delete a user or a pose, the associated rows in the progressions table will be removed because of ON DELETE CASCADE.
