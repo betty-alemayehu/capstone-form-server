@@ -9,15 +9,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 5050;
-
 //base
 app.get("/", (req, res) => {
   res.send("Backend is running...");
 });
 
 //user routes
-app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes); //register
+
+const PORT = process.env.PORT || 5050;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
