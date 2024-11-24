@@ -1,5 +1,5 @@
 //mediaController.js
-import path from "path";
+import db from "../db/dbConfig.js";
 import { Media } from "../models/Media.js";
 
 // Fetch the most recent media for a progression
@@ -40,7 +40,7 @@ export const fetchMediaByUserAndPose = async (req, res) => {
     if (!media.length) {
       return res
         .status(404)
-        .json({ message: "No media found for this pose and user." });
+        .json({ message: "No media found for this user and pose." });
     }
 
     res.status(200).json(media);
@@ -55,15 +55,27 @@ export const fetchMediaByUserAndPose = async (req, res) => {
 // Add a new media record (used in file upload handling)
 export const addMediaRecord = async (req, res) => {
   try {
-    const { progression_id, user_id, pose_id } = req.body;
+    const { user_id, pose_id } = req.body;
 
-    if (!progression_id || !user_id || !pose_id || !req.filePath) {
+    if (!user_id || !pose_id || !req.filePath) {
       return res.status(400).json({ error: "Missing required fields." });
+    }
+
+    // Fetch the progression_id dynamically
+    const progression = await db("progressions")
+      .where({ user_id, pose_id })
+      .select("id")
+      .first();
+
+    if (!progression) {
+      return res.status(404).json({
+        error: "No progression found for the provided user and pose.",
+      });
     }
 
     // Create the media record in the database
     const mediaRecord = await Media.create({
-      progression_id,
+      progression_id: progression.id,
       user_id,
       pose_id,
       custom_media: req.filePath, // Relative file path from middleware

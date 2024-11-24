@@ -16,15 +16,15 @@ export const handleFileUpload = async (req, res, next) => {
       return res.status(400).json({ error: "No file uploaded." });
     }
 
-    const { user_id, pose_id, progression_id } = req.body;
-    if (!user_id || !pose_id || !progression_id) {
+    const { user_id, pose_id } = req.body;
+    if (!user_id || !pose_id) {
       return res.status(400).json({ error: "Missing required fields." });
     }
 
     const uploadedFile = req.files.image;
 
     // Generate a unique filename
-    const uniqueFileName = `${user_id}_${pose_id}_${progression_id}_${Date.now()}${path.extname(
+    const uniqueFileName = `${user_id}_${pose_id}_${Date.now()}${path.extname(
       uploadedFile.name
     )}`;
     const uploadPath = path.join("uploads", uniqueFileName);

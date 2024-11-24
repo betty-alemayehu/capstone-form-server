@@ -73,39 +73,24 @@ export const fetchProgressionById = async (req, res) => {
 
 // Update a progression by user_id and pose_id
 export const updateProgression = async (req, res) => {
-  const { user_id, pose_id } = req.body; // Extract user_id and pose_id from the request body
-  const { status } = req.body; // The new status
+  const { user_id, pose_id } = req.body;
 
-  if (!user_id || !pose_id || !status) {
-    return res
-      .status(400)
-      .json({ error: "user_id, pose_id, and status are required." });
+  if (!user_id || !pose_id) {
+    return res.status(400).json({ error: "User ID and Pose ID are required." });
   }
 
   try {
-    console.log(
-      `Updating progression for user_id ${user_id}, pose_id ${pose_id} to status: ${status}`
-    );
+    const progression = await db("progressions")
+      .where({ user_id, pose_id })
+      .update({ status: "complete" });
 
-    const updatedProgression = await updateProgressionByUserAndPose(
-      user_id,
-      pose_id,
-      status
-    );
-
-    if (!updatedProgression) {
-      return res.status(404).json({
-        message:
-          "No matching progression found for the specified user and pose.",
-      });
+    if (progression === 0) {
+      return res.status(404).json({ message: "Progression not found." });
     }
 
-    res.status(200).json({
-      message: "Progression updated successfully.",
-      progression: updatedProgression,
-    });
-  } catch (error) {
-    console.error("Error updating progression:", error.message);
+    res.status(200).json({ message: "Progression updated successfully." });
+  } catch (err) {
+    console.error("Error updating progression:", err);
     res.status(500).json({ error: "Failed to update progression." });
   }
 };
