@@ -9,17 +9,6 @@ export async function up(knex) {
       INSERT INTO progressions (user_id, pose_id, status, created_at, updated_at)
       SELECT NEW.id, id, 'In Progress', NOW(), NOW()
       FROM poses;
-
-      -- Insert corresponding media entries using pose's url_png
-      INSERT INTO media (progression_id, custom_media, created_at, updated_at)
-      SELECT
-        p.id,
-        pos.url_png,
-        NOW(),
-        NOW()
-      FROM progressions p
-      JOIN poses pos ON p.pose_id = pos.id
-      WHERE p.user_id = NEW.id;
     END;
   `);
 }
