@@ -52,8 +52,9 @@ export const fetchMediaByUserAndPose = async (req, res) => {
   }
 };
 
-// Add a new media record (used in file upload handling)
+// Add a new media record (used in file upload handling) and update the progression status
 export const addMediaRecord = async (req, res) => {
+  const trx = await db.transaction(); // Start a transaction
   try {
     const { user_id, pose_id } = req.body;
 
@@ -62,19 +63,20 @@ export const addMediaRecord = async (req, res) => {
     }
 
     // Fetch the progression_id dynamically
-    const progression = await db("progressions")
+    const progression = await trx("progressions")
       .where({ user_id, pose_id })
       .select("id")
       .first();
 
     if (!progression) {
+      await trx.rollback();
       return res.status(404).json({
         error: "No progression found for the provided user and pose.",
       });
     }
 
     // Create the media record in the database
-    const mediaRecord = await Media.create({
+    const mediaRecord = await trx("media").insert({
       progression_id: progression.id,
       user_id,
       pose_id,
@@ -83,12 +85,32 @@ export const addMediaRecord = async (req, res) => {
       updated_at: new Date(),
     });
 
-    res
-      .status(201)
-      .json({ message: "Media record created.", media: mediaRecord });
+    // Update the progression status to "Completed"
+    const updated = await trx("progressions")
+      .where({ user_id, pose_id })
+      .update({ status: "Completed", updated_at: db.fn.now() });
+
+    if (updated === 0) {
+      await trx.rollback();
+      return res.status(404).json({
+        error: "Failed to update progression status.",
+      });
+    }
+
+    await trx.commit(); // Commit the transaction
+    res.status(201).json({
+      message: "Media record created and progression updated.",
+      media: mediaRecord,
+    });
   } catch (err) {
-    console.error("Error creating media record:", err.message);
-    res.status(500).json({ error: "Failed to create media record." });
+    await trx.rollback(); // Rollback the transaction on error
+    console.error(
+      "Error creating media record or updating progression:",
+      err.message
+    );
+    res
+      .status(500)
+      .json({ error: "Failed to create media record or update progression." });
   }
 };
 
