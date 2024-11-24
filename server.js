@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js"; // Import user routes
 import progressionRoutes from "./routes/progressionRoutes.js"; // Import progression routes
+import mediaRoutes from "./routes/mediaRoutes.js"; // Import media routes
 
 dotenv.config();
 
@@ -27,6 +28,9 @@ app.use("/users", userRoutes); //register
 
 // Progression routes
 app.use("/progressions", progressionRoutes);
+
+// Media routes
+app.use("/media", mediaRoutes);
 
 const PORT = process.env.PORT || 5050;
 

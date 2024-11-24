@@ -7,7 +7,7 @@ export async function up(knex) {
     BEGIN
       -- Insert a progression for each pose
       INSERT INTO progressions (user_id, pose_id, status, created_at, updated_at)
-      SELECT NEW.id, id, 'Not Attempted', NOW(), NOW()
+      SELECT NEW.id, id, 'In Progress', NOW(), NOW()
       FROM poses;
 
       -- Insert corresponding media entries using pose's url_png

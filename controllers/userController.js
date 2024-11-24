@@ -8,7 +8,7 @@ import {
   deleteUserById,
 } from "../models/User.js";
 
-import { getAllProgressions } from "../models/Progression.js";
+import jwt from "jsonwebtoken";
 
 //REGISTER
 export const registerUser = async (req, res) => {
@@ -41,28 +41,68 @@ export const registerUser = async (req, res) => {
 };
 
 //LOGIN
+// export const loginUser = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     if (!email || !password) {
+//       return res.status(400).json({ error: "Email and password are required" });
+//     }
+
+//     const user = await getUserByEmail(email);
+
+//     if (!user) {
+//       return res.status(404).json({ error: "User not found" });
+//     }
+
+//     if (user.password !== password) {
+//       return res.status(401).json({ error: "Invalid credentials" });
+//     }
+
+//     res.status(200).json({ message: "Login successful" });
+//   } catch (error) {
+//     console.error("Error logging in:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// };
+
+//LOGIN using authentication
 export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required." });
+  }
+
   try {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ error: "Email and password are required" });
-    }
-
     const user = await getUserByEmail(email);
 
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      return res.status(404).json({ error: "User not found." });
     }
 
     if (user.password !== password) {
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res.status(401).json({ error: "Invalid credentials." });
     }
 
-    res.status(200).json({ message: "Login successful" });
+    // Generate a token
+    const token = jwt.sign(
+      { user_id: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+
+    res.status(200).json({
+      message: "Login successful",
+      token, // Include token in the response
+      user_id: user.id,
+      email: user.email,
+    });
   } catch (error) {
-    console.error("Error logging in:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error("Error logging in:", error.message);
+    res.status(500).json({ error: "Internal server error." });
   }
 };
 
