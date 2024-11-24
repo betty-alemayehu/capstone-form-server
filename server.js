@@ -2,30 +2,37 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import userRoutes from "./routes/userRoutes.js"; // Import user routes
-import progressionRoutes from "./routes/progressionRoutes.js"; // Import progression routes
-import mediaRoutes from "./routes/mediaRoutes.js"; // Import media routes
-import poseRoutes from "./routes/poseRoutes.js"; // Import pose routes
+import path from "path";
+import userRoutes from "./routes/userRoutes.js";
+import progressionRoutes from "./routes/progressionRoutes.js";
+import mediaRoutes from "./routes/mediaRoutes.js";
+import poseRoutes from "./routes/poseRoutes.js";
+import { configureFileUpload } from "./middleware/fileUploadMiddleware.js";
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(configureFileUpload); // Use file upload middleware
 
-//Log every request
+// Log every request
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
 
-//base
+// Serve static files from the uploads folder
+const uploadsPath = path.join(__dirname, "uploads");
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
+
+// Base endpoint
 app.get("/", (req, res) => {
   res.send("Backend is running...");
 });
 
-//user routes
-app.use("/users", userRoutes); //register
+// User routes
+app.use("/users", userRoutes);
 
 // Progression routes
 app.use("/progressions", progressionRoutes);

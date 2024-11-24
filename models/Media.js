@@ -1,37 +1,41 @@
 //models/Media.js
 import db from "../db/dbConfig.js";
 
-// Get all media for a specific progression
-export const getMediaByProgressionId = async (progressionId) => {
-  return await db("media").where({ progression_id: progressionId }).select("*");
-};
+export const Media = {
+  // Get all media for a specific progression
+  getByProgressionId: async (progressionId) => {
+    return db("media").where({ progression_id: progressionId }).select("*");
+  },
 
-// Add a new media record
-export const addMedia = async (mediaData) => {
-  const [newMedia] = await db("media").insert(mediaData);
-  return newMedia;
-};
+  // Add a new media record
+  create: async (mediaData) => {
+    const [newMedia] = await db("media").insert(mediaData); // Works for PostgreSQL; remove for MySQL
+    return newMedia;
+  },
 
-// Update an existing media record
-export const updateMedia = async (id, updates) => {
-  const [updatedMedia] = await db("media").where({ id }).update(updates);
-  // .returning("*"); //doesn't exist in sql - how to return all?
-  return updatedMedia;
-};
+  // Update an existing media record
+  update: async (id, updates) => {
+    const updatedCount = await db("media").where({ id }).update(updates);
+    if (updatedCount) {
+      return db("media").where({ id }).first(); // Fetch the updated record
+    }
+    return null; // Return null if no record was updated
+  },
 
-// Delete a media record
-export const deleteMedia = async (id) => {
-  await db("media").where({ id }).del();
-};
+  // Delete a media record
+  delete: async (id) => {
+    await db("media").where({ id }).del();
+  },
 
-// Get all media for a specific user and pose
-export const getMediaByUserAndPose = async (userId, poseId) => {
-  return await db("media")
-    .join("progressions", "media.progression_id", "=", "progressions.id")
-    .where({
-      "progressions.user_id": userId,
-      "progressions.pose_id": poseId,
-    })
-    .select("media.*")
-    .orderBy("media.created_at", "desc");
+  // Get all media for a specific user and pose
+  getByUserAndPose: async (userId, poseId) => {
+    return db("media")
+      .join("progressions", "media.progression_id", "=", "progressions.id")
+      .where({
+        "progressions.user_id": userId,
+        "progressions.pose_id": poseId,
+      })
+      .select("media.*")
+      .orderBy("media.created_at", "desc");
+  },
 };
