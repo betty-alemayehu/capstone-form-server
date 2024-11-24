@@ -23,3 +23,15 @@ export const updateMedia = async (id, updates) => {
 export const deleteMedia = async (id) => {
   await db("media").where({ id }).del();
 };
+
+// Get all media for a specific user and pose
+export const getMediaByUserAndPose = async (userId, poseId) => {
+  return await db("media")
+    .join("progressions", "media.progression_id", "=", "progressions.id")
+    .where({
+      "progressions.user_id": userId,
+      "progressions.pose_id": poseId,
+    })
+    .select("media.*")
+    .orderBy("media.created_at", "desc");
+};

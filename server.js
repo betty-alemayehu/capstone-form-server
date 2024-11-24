@@ -5,6 +5,7 @@ import cors from "cors";
 import userRoutes from "./routes/userRoutes.js"; // Import user routes
 import progressionRoutes from "./routes/progressionRoutes.js"; // Import progression routes
 import mediaRoutes from "./routes/mediaRoutes.js"; // Import media routes
+import poseRoutes from "./routes/poseRoutes.js"; // Import pose routes
 
 dotenv.config();
 
@@ -31,6 +32,9 @@ app.use("/progressions", progressionRoutes);
 
 // Media routes
 app.use("/media", mediaRoutes);
+
+// Pose routes
+app.use("/poses", poseRoutes);
 
 const PORT = process.env.PORT || 5050;
 
