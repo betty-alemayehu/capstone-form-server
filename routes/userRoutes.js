@@ -2,7 +2,6 @@ import express from "express";
 import {
   registerUser,
   loginUser,
-  fetchAllUsers,
   fetchUserById,
   updateUserById,
   deleteUser,
@@ -11,10 +10,7 @@ import {
 const router = express.Router();
 
 // User routes grouped under "/users"
-router
-  .route("/")
-  .get(fetchAllUsers) // GET /users - Fetch all users
-  .post(registerUser); // POST /users - Register a new user
+router.route("/").post(registerUser); // POST /users - Register a new user
 
 router
   .route("/:id")
