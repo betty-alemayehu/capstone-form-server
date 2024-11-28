@@ -28,19 +28,19 @@ export const fetchLatestMedia = async (req, res) => {
 export const fetchMediaByUserAndPose = async (req, res) => {
   const { user_id, pose_id } = req.query;
 
-  // Validate required parameters
   if (!user_id || !pose_id) {
     return res.status(400).json({ error: "User ID and Pose ID are required." });
   }
 
   try {
-    // Fetch media from the database
     const media = await Media.getByUserAndPose(user_id, pose_id);
 
+    // Return an empty array instead of a 404 for no results
     if (!media.length) {
-      return res
-        .status(404)
-        .json({ message: "No media found for this user and pose." });
+      console.log(
+        `No media found for user_id: ${user_id}, pose_id: ${pose_id}`
+      );
+      return res.status(200).json([]);
     }
 
     res.status(200).json(media);
