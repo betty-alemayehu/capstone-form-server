@@ -3,7 +3,7 @@ import {
   getAllProgressions,
   getUserProgressions,
   getProgressionById,
-  updateProgressionByUserAndPose,
+  getProgressionsWithMedia,
 } from "../models/Progression.js";
 
 // Fetch all progressions
@@ -92,5 +92,20 @@ export const updateProgression = async (req, res) => {
   } catch (err) {
     console.error("Error updating progression:", err);
     res.status(500).json({ error: "Failed to update progression." });
+  }
+};
+
+// controllers/progressionController.js
+export const getUserProgressionsWithMedia = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const results = await getProgressionsWithMedia(userId);
+    res.status(200).json(results);
+  } catch (error) {
+    console.error("Error fetching progressions with media:", error);
+    res
+      .status(500)
+      .json({ message: "Failed to load progressions with media.", error });
   }
 };

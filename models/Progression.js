@@ -54,3 +54,33 @@ export const updateProgressionByUserAndPose = async (
     throw error;
   }
 };
+
+// models/ProgressionModel.js
+export const getProgressionsWithMedia = async (userId) => {
+  try {
+    return await db("progressions")
+      .join("poses", "progressions.pose_id", "poses.id")
+      .leftJoin(
+        db("media")
+          .select("pose_id", db.raw("MAX(id) as max_id"))
+          .where("user_id", userId)
+          .groupBy("pose_id")
+          .as("latest_media"),
+        "progressions.pose_id",
+        "latest_media.pose_id"
+      )
+      .leftJoin("media", "media.id", "latest_media.max_id")
+      .select(
+        "progressions.id as progression_id",
+        "progressions.status",
+        "poses.id as pose_id",
+        "poses.english_name",
+        "poses.url_png",
+        db.raw("COALESCE(media.custom_media, poses.url_png) as media_url")
+      )
+      .where("progressions.user_id", userId);
+  } catch (error) {
+    console.error("Error in getProgressionsWithMedia model:", error);
+    throw error; // Let the controller handle the error response
+  }
+};
