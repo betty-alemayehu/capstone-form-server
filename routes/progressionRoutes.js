@@ -4,7 +4,6 @@ import {
   fetchAllProgressions,
   fetchUserProgressions,
   fetchProgressionById,
-  updateProgression,
   getUserProgressionsWithMedia,
 } from "../controllers/progressionController.js";
 
@@ -22,8 +21,5 @@ router.get("/user/:userId/media", getUserProgressionsWithMedia);
 
 // Route to fetch a progression by ID
 router.get("/:id", fetchProgressionById);
-
-// Route to update a progression by user_id and pose_id
-router.put("/", updateProgression);
 
 export default router;

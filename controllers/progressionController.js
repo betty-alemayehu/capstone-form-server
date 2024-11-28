@@ -71,30 +71,6 @@ export const fetchProgressionById = async (req, res) => {
   }
 };
 
-// Update a progression by user_id and pose_id
-export const updateProgression = async (req, res) => {
-  const { user_id, pose_id } = req.body;
-
-  if (!user_id || !pose_id) {
-    return res.status(400).json({ error: "User ID and Pose ID are required." });
-  }
-
-  try {
-    const progression = await db("progressions")
-      .where({ user_id, pose_id })
-      .update({ status: "complete" });
-
-    if (progression === 0) {
-      return res.status(404).json({ message: "Progression not found." });
-    }
-
-    res.status(200).json({ message: "Progression updated successfully." });
-  } catch (err) {
-    console.error("Error updating progression:", err);
-    res.status(500).json({ error: "Failed to update progression." });
-  }
-};
-
 // controllers/progressionController.js
 export const getUserProgressionsWithMedia = async (req, res) => {
   const { userId } = req.params;

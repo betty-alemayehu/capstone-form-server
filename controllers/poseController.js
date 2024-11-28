@@ -1,16 +1,5 @@
 //poseController.js
-import { getAllPoses, getPoseById } from "../models/Pose.js";
-
-// Fetch all poses
-export const fetchAllPoses = async (req, res) => {
-  try {
-    const poses = await getAllPoses(); // Use model function
-    res.status(200).json(poses);
-  } catch (error) {
-    console.error("Error fetching poses:", error.message);
-    res.status(500).json({ error: "Failed to fetch poses." });
-  }
-};
+import { getPoseById } from "../models/Pose.js";
 
 // Fetch a pose by ID
 export const fetchPoseById = async (req, res) => {

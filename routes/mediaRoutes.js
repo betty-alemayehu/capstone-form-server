@@ -1,7 +1,6 @@
 //mediaRoutes.js
 import express from "express";
 import {
-  fetchLatestMedia,
   fetchMediaByUserAndPose,
   addMediaRecord,
   deleteMediaRecord,
@@ -15,9 +14,6 @@ const router = express.Router();
 
 // Upload media (handled in the upload route)
 router.post("/upload", handleFileUpload, addMediaRecord);
-
-// Fetch the latest media for a progression
-router.get("/latest", fetchLatestMedia);
 
 // Fetch media by user and pose
 router.get("/user-pose", fetchMediaByUserAndPose);

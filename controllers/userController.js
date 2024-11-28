@@ -40,32 +40,6 @@ export const registerUser = async (req, res) => {
   }
 };
 
-//LOGIN
-// export const loginUser = async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-
-//     if (!email || !password) {
-//       return res.status(400).json({ error: "Email and password are required" });
-//     }
-
-//     const user = await getUserByEmail(email);
-
-//     if (!user) {
-//       return res.status(404).json({ error: "User not found" });
-//     }
-
-//     if (user.password !== password) {
-//       return res.status(401).json({ error: "Invalid credentials" });
-//     }
-
-//     res.status(200).json({ message: "Login successful" });
-//   } catch (error) {
-//     console.error("Error logging in:", error);
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// };
-
 //LOGIN using authentication
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -103,17 +77,6 @@ export const loginUser = async (req, res) => {
   } catch (error) {
     console.error("Error logging in:", error.message);
     res.status(500).json({ error: "Internal server error." });
-  }
-};
-
-//GET users
-export const fetchAllUsers = async (req, res) => {
-  try {
-    const users = await getAllUsers();
-    res.status(200).json(users);
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ error: "Failed to fetch users." });
   }
 };
 

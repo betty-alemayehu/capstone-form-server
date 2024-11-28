@@ -2,28 +2,6 @@
 import db from "../db/dbConfig.js";
 import { Media } from "../models/Media.js";
 
-// Fetch the most recent media for a progression
-export const fetchLatestMedia = async (req, res) => {
-  const { progression_id } = req.query;
-
-  if (!progression_id) {
-    return res.status(400).json({ error: "Progression ID is required." });
-  }
-
-  try {
-    const media = await Media.getByProgressionId(progression_id);
-    if (!media.length) {
-      return res.status(200).json(null); // Return null if no media found
-    }
-
-    const latestMedia = media[0]; // The most recent media is the first item when ordered by `created_at`
-    res.status(200).json(latestMedia);
-  } catch (err) {
-    console.error("Error fetching media:", err.message);
-    res.status(500).json({ error: "Failed to fetch media." });
-  }
-};
-
 // Fetch all media for a specific user and pose
 export const fetchMediaByUserAndPose = async (req, res) => {
   const { user_id, pose_id } = req.query;
