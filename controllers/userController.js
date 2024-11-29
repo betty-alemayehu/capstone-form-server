@@ -21,7 +21,7 @@ export const registerUser = async (req, res) => {
 
     const existingUser = await getUserByEmail(email);
     if (existingUser) {
-      return res.status(400).json({ error: "Email is already in use" });
+      return res.status(409).json({ error: "Email is already in use" });
     }
 
     const user = await createUser({ name, email, password });
