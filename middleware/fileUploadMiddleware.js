@@ -1,5 +1,6 @@
 //fileUploadMiddleware.js
 import fileUpload from "express-fileupload";
+import fs from "fs/promises";
 import path from "path";
 
 // Middleware to configure file uploads

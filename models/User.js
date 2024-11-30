@@ -1,5 +1,6 @@
 //models/User.js
 import db from "../db/dbConfig.js";
+import { deleteFiles } from "../utils/fileUtils.js";
 
 // GET all users
 export const getAllUsers = async () => {
@@ -40,10 +41,24 @@ export const putUserById = async (id, updates) => {
 
 // DELETE user by Id
 export const deleteUserById = async (id) => {
-  const user = await db("users").where({ id }).first(); // Check if user exists
+  const user = await db("users").where({ id }).first(); // Fetch user
   if (!user) {
-    throw new Error(`User with ID ${id} not found.`); // Handle non-existent user
+    throw new Error(`User with ID ${id} not found.`);
   }
-  await db("users").where({ id }).del(); // Delete the user
+
+  // Fetch all associated media files for the user
+  const userMedia = await db("media")
+    .where({ user_id: id })
+    .select("custom_media");
+  const filePaths = userMedia.map((media) => media.custom_media);
+
+  // Delete associated files
+  if (filePaths.length > 0) {
+    await deleteFiles(filePaths);
+  }
+
+  // Remove the user record
+  await db("users").where({ id }).del();
+
   return user; // Return the deleted user for confirmation
 };

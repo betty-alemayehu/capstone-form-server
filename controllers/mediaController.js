@@ -1,6 +1,7 @@
 //mediaController.js
 import db from "../db/dbConfig.js";
 import { Media } from "../models/Media.js";
+import { deleteFile } from "../utils/fileUtils.js";
 
 // Fetch all media for a specific user and pose
 export const fetchMediaByUserAndPose = async (req, res) => {
@@ -115,10 +116,27 @@ export const deleteMediaRecord = async (req, res) => {
   const { id } = req.params;
 
   try {
+    // Fetch the media record to get the file path
+    const mediaRecord = await Media.getById(id);
+    if (!mediaRecord) {
+      return res.status(404).json({ error: "Media record not found." });
+    }
+
+    // Delete the file from the filesystem
+    await deleteFile(mediaRecord.custom_media);
+
+    // Delete the media record from the database
     await Media.delete(id);
-    res.status(200).json({ message: "Media record deleted successfully." });
-  } catch (err) {
-    console.error("Error deleting media record:", err.message);
-    res.status(500).json({ error: "Failed to delete media record." });
+
+    res
+      .status(200)
+      .json({
+        message: "Media record and associated file deleted successfully.",
+      });
+  } catch (error) {
+    console.error("Error deleting media record:", error.message);
+    res
+      .status(500)
+      .json({ error: "Failed to delete media record and associated file." });
   }
 };

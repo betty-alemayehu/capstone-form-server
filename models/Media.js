@@ -22,9 +22,14 @@ export const Media = {
     return null; // Return null if no record was updated
   },
 
-  // Delete a media record
+  // Fetch a media record by ID
+  getById: async (id) => {
+    return db("media").where({ id }).first();
+  },
+
+  // Delete a media record by ID
   delete: async (id) => {
-    await db("media").where({ id }).del();
+    return db("media").where({ id }).del();
   },
 
   // Get all media for a specific user and pose
