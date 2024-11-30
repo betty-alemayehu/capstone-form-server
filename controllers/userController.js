@@ -1,6 +1,5 @@
 //userController.js
 import {
-  getAllUsers,
   createUser,
   getUserByEmail,
   getUserById,
@@ -113,6 +112,14 @@ export const updateUserById = async (req, res) => {
     const user = await getUserById(id);
     if (!user) {
       return res.status(404).json({ error: "User not found." });
+    }
+
+    // Check email uniqueness if updating the email
+    if (updates.email && updates.email !== user.email) {
+      const existingUser = await getUserByEmail(updates.email);
+      if (existingUser) {
+        return res.status(409).json({ error: "Email is already in use." });
+      }
     }
 
     // Perform the update
