@@ -116,27 +116,39 @@ export const deleteMediaRecord = async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Fetch the media record to get the file path
+    // Fetch the media record to get the file path and associated progression details
     const mediaRecord = await Media.getById(id);
     if (!mediaRecord) {
       return res.status(404).json({ error: "Media record not found." });
     }
 
+    const { user_id, pose_id, custom_media } = mediaRecord;
+
     // Delete the file from the filesystem
-    await deleteFile(mediaRecord.custom_media);
+    await deleteFile(custom_media);
 
     // Delete the media record from the database
     await Media.delete(id);
 
-    res
-      .status(200)
-      .json({
-        message: "Media record and associated file deleted successfully.",
-      });
+    // Check if any other custom media exists for the same user and pose
+    const remainingMedia = await db("media")
+      .where({ user_id, pose_id })
+      .select("id");
+
+    if (remainingMedia.length === 0) {
+      // If no custom media exists, update progression status to "In Progress"
+      await db("progressions")
+        .where({ user_id, pose_id })
+        .update({ status: "In Progress", updated_at: db.fn.now() });
+    }
+
+    res.status(200).json({
+      message: "Media record deleted and progression updated successfully.",
+    });
   } catch (error) {
     console.error("Error deleting media record:", error.message);
     res
       .status(500)
-      .json({ error: "Failed to delete media record and associated file." });
+      .json({ error: "Failed to delete media record and update progression." });
   }
 };
