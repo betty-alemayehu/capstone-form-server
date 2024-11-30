@@ -1,3 +1,4 @@
+//fileUtils.js
 import fs from "fs/promises";
 import path from "path";
 
@@ -11,13 +12,31 @@ const uploadsDir = path.resolve("uploads");
  */
 export const deleteFile = async (filePath) => {
   try {
-    const fullPath = path.join(uploadsDir, filePath);
-    await fs.unlink(fullPath); // Delete the file
+    // Normalize the file path by removing the "/uploads/" prefix if it exists
+    const cleanedPath = filePath.replace(/^\/uploads\//, "");
+    const fullPath = path.join(uploadsDir, cleanedPath);
+
+    console.log(`Attempting to delete file: ${fullPath}`); // Log for debugging
+
+    // Check if the file exists
+    const fileExists = await fs
+      .access(fullPath)
+      .then(() => true)
+      .catch(() => false);
+
+    if (!fileExists) {
+      console.warn(`File not found: ${fullPath}`);
+      return; // Exit if the file doesn't exist
+    }
+
+    // Delete the file
+    await fs.unlink(fullPath);
     console.log(`Deleted file: ${fullPath}`);
   } catch (error) {
-    // Log and continue if file is not found or inaccessible
+    // Handle other errors (e.g., permission issues)
+    console.error(`Error deleting file: ${filePath}`, error.message);
     if (error.code !== "ENOENT") {
-      console.error(`Error deleting file: ${filePath}`, error.message);
+      throw new Error(`Failed to delete file: ${filePath}`);
     }
   }
 };
