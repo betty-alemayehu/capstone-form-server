@@ -7,7 +7,7 @@ export const seed = async (knex) => {
   await knex("media").insert([
     {
       id: 1,
-      progression_id: 190,
+      progression_id: 1,
       user_id: 1,
       pose_id: 1,
       custom_media: "/uploads/1_1.png",
@@ -17,7 +17,7 @@ export const seed = async (knex) => {
     },
     {
       id: 2,
-      progression_id: 192,
+      progression_id: 3,
       user_id: 1,
       pose_id: 3,
       custom_media: "/uploads/1_3.png",
@@ -27,7 +27,7 @@ export const seed = async (knex) => {
     },
     {
       id: 3,
-      progression_id: 195,
+      progression_id: 6,
       user_id: 1,
       pose_id: 6,
       custom_media: "/uploads/1_6.png",
@@ -37,7 +37,7 @@ export const seed = async (knex) => {
     },
     {
       id: 5,
-      progression_id: 227,
+      progression_id: 38,
       user_id: 1,
       pose_id: 38,
       custom_media: "/uploads/1_38.jpg",
@@ -47,7 +47,7 @@ export const seed = async (knex) => {
     },
     {
       id: 6,
-      progression_id: 198,
+      progression_id: 9,
       user_id: 1,
       pose_id: 9,
       custom_media: "/uploads/1_9.JPG",
@@ -57,7 +57,7 @@ export const seed = async (knex) => {
     },
     {
       id: 8,
-      progression_id: 200,
+      progression_id: 11,
       user_id: 1,
       pose_id: 11,
       custom_media: "/uploads/1_11.png",
@@ -67,7 +67,7 @@ export const seed = async (knex) => {
     },
     {
       id: 9,
-      progression_id: 201,
+      progression_id: 12,
       user_id: 1,
       pose_id: 12,
       custom_media: "/uploads/1_12.jpeg",
@@ -77,7 +77,7 @@ export const seed = async (knex) => {
     },
     {
       id: 12,
-      progression_id: 220,
+      progression_id: 31,
       user_id: 1,
       pose_id: 31,
       custom_media: "/uploads/1_31.jpg",
