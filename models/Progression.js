@@ -75,6 +75,7 @@ export const getProgressionsWithMedia = async (userId) => {
         "progressions.status",
         "poses.id as pose_id",
         "poses.english_name",
+        "poses.difficulty",
         "poses.url_png",
         db.raw("COALESCE(media.custom_media, poses.url_png) as media_url")
       )

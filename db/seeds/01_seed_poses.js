@@ -19,6 +19,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.png",
       url_svg_alt:
         "https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 3,
@@ -35,6 +36,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483072/yoga-api/3_aa0fgk.png",
       url_svg_alt: "https://www.dropbox.com/s/wizj5kwxvez4c0a/bow.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 4,
@@ -52,6 +54,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/4_qq6nxw.png",
       url_svg_alt: "https://www.dropbox.com/s/f1w64ybg4sn8ejt/bridge.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 5,
@@ -69,6 +72,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/5_i64gif.png",
       url_svg_alt:
         "https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 6,
@@ -85,6 +89,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/6_ri1w0e.png",
       url_svg_alt: "https://www.dropbox.com/s/o5gr4lngltsdg5r/camel.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 7,
@@ -100,6 +105,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/7_a6aspg.png",
       url_svg_alt: "https://www.dropbox.com/s/cginnz98of2jpgr/cat.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 9,
@@ -116,6 +122,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/9_ewvoun.png",
       url_svg_alt: "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 10,
@@ -132,6 +139,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483079/yoga-api/10_wzpo85.png",
       url_svg_alt: "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 11,
@@ -149,6 +157,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/11_dczyrp.png",
       url_svg_alt:
         "https://www.dropbox.com/s/eohyx2crvtjvaxb/sivasana.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 8,
@@ -165,6 +174,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483077/yoga-api/8_wi10sn.png",
       url_svg_alt: "https://www.dropbox.com/s/neau4ceai1rskh6/cow.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 12,
@@ -182,6 +192,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/12_pv4p1z.png",
       url_svg_alt:
         "https://www.dropbox.com/s/1oc1dqv8mfwo8uj/highlunge.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 39,
@@ -199,6 +210,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483095/yoga-api/39_hqj0sa.png",
       url_svg_alt:
         "https://www.dropbox.com/s/9tv6z3qdcw2vg3a/standingstretch.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 13,
@@ -215,6 +227,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/13_hdjxuz.png",
       url_svg_alt: "https://www.dropbox.com/s/ukaxoioh0uooswj/crow.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 14,
@@ -232,6 +245,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/14_k9lr9a.png",
       url_svg_alt:
         "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 15,
@@ -250,6 +264,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/15_vkviqn.png",
       url_svg_alt:
         "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 16,
@@ -266,6 +281,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/16_g7ueht.png",
       url_svg_alt: "https://www.dropbox.com/s/w05qgx7wyxva1y3/eagle.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 17,
@@ -284,6 +300,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/17_l9joyu.png",
       url_svg_alt:
         "https://www.dropbox.com/s/0yk0z7f0a4ni37l/extendedhandtotoe.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 18,
@@ -302,6 +319,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/18_aqufak.png",
       url_svg_alt:
         "https://www.dropbox.com/s/yzynxmyb9o7eras/extendedsideangle.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 19,
@@ -319,6 +337,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/19_jadqwc.png",
       url_svg_alt:
         "https://www.dropbox.com/s/kjlyju4m91qgoi6/forearmstand.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 20,
@@ -336,6 +355,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/20_uogrfq.png",
       url_svg_alt:
         "https://www.dropbox.com/s/sjqfq99pqpelv4v/forwardfoldshoulderstretch.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 37,
@@ -352,6 +372,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/37_moh7ii.png",
       url_svg_alt: "https://www.dropbox.com/s/ntrwtdlr6tdkdxz/squat.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 2,
@@ -369,6 +390,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483073/yoga-api/2_ozh7sv.png",
       url_svg_alt:
         "https://www.dropbox.com/s/1nx0r94msxjwvyp/boatbentlegs.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 32,
@@ -386,6 +408,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/32_hafoa0.png",
       url_svg_alt:
         "https://www.dropbox.com/s/u9joi8lbntxumyh/seatedspinaltwist.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 21,
@@ -403,6 +426,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/21_etedlp.png",
       url_svg_alt:
         "https://www.dropbox.com/s/gpumf9eehr8wo9g/halfmoon.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 22,
@@ -421,6 +445,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/22_ojzmr8.png",
       url_svg_alt:
         "https://www.dropbox.com/s/p7pf5j0untktn9c/handstand.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 25,
@@ -439,6 +464,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483087/yoga-api/25_rssro9.png",
       url_svg_alt:
         "https://www.dropbox.com/s/10usd0gcqgy6o53/kingpigeon.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 31,
@@ -456,6 +482,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/31_ozseum.png",
       url_svg_alt:
         "https://www.dropbox.com/s/0oylivjwzuj5fnp/seatedORlotus.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 23,
@@ -473,6 +500,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483086/yoga-api/23_k2jccj.png",
       url_svg_alt:
         "https://www.dropbox.com/s/h0ehjaz1wa9xfu1/lowlunge.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 24,
@@ -489,6 +517,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/24_ulgsjo.png",
       url_svg_alt: "https://www.dropbox.com/s/77peru289zm446u/pigeon.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 26,
@@ -505,6 +534,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/26_mxkzlo.png",
       url_svg_alt: "https://www.dropbox.com/s/jg6ge8zpaltx10f/plank.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 27,
@@ -521,6 +551,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/27_m4yux9.png",
       url_svg_alt: "https://www.dropbox.com/s/zi9231wbajm6d2m/plow.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 28,
@@ -538,6 +569,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/28_uu58tt.png",
       url_svg_alt:
         "https://www.dropbox.com/s/j7p2600bmf840e0/pyramid.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 29,
@@ -555,6 +587,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/29_ww7bot.png",
       url_svg_alt:
         "https://www.dropbox.com/s/q6yn6cb9fglo0wp/reverswarrior.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 30,
@@ -573,6 +606,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/30_gumpl3.png",
       url_svg_alt:
         "https://www.dropbox.com/s/ji0otecqx42by00/seatedforwardfold.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 33,
@@ -591,6 +625,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/33_r7motl.png",
       url_svg_alt:
         "https://www.dropbox.com/s/tqj48exec3zub2u/shoulderstand.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 34,
@@ -608,6 +643,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/34_qle5tp.png",
       url_svg_alt:
         "https://www.dropbox.com/s/w35ciia4u570xj8/sideplank.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 40,
@@ -625,6 +661,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/40_dkmow6.png",
       url_svg_alt:
         "https://www.dropbox.com/s/6z51vzosovhx5w7/straddlesplit.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 35,
@@ -642,6 +679,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/35_dytwvz.png",
       url_svg_alt: "https://www.dropbox.com/s/cl8teqpf9yingwm/sphinx.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 36,
@@ -658,6 +696,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/36_a2z20a.png",
       url_svg_alt: "https://www.dropbox.com/s/u8dxhc41hjfcxj6/splits.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 38,
@@ -675,6 +714,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/38_yb3thk.png",
       url_svg_alt:
         "https://www.dropbox.com/s/u09snmhtposvaq0/standingforwardfold.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 41,
@@ -691,6 +731,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483094/yoga-api/41_veknug.png",
       url_svg_alt: "https://www.dropbox.com/s/mn2ktlihp12mtfa/tree.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 42,
@@ -708,6 +749,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/42_jawxqw.png",
       url_svg_alt:
         "https://www.dropbox.com/s/l41pfqjwmjoy5os/triangle.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 43,
@@ -725,6 +767,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/43_m3nxjk.png",
       url_svg_alt: "https://www.dropbox.com/s/vnfx1srlwt1583t/updog.svg?raw=1",
+      difficulty: "Beginner",
     },
     {
       id: 44,
@@ -742,6 +785,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/44_dqeayo.png",
       url_svg_alt:
         "https://www.dropbox.com/s/j9fip5gm1o1l3fx/warrior1.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 46,
@@ -759,6 +803,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/46_lz6v7i.png",
       url_svg_alt:
         "https://www.dropbox.com/s/lwgoky3z37ameif/warrior3.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 45,
@@ -776,6 +821,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/45_ehimr1.png",
       url_svg_alt:
         "https://www.dropbox.com/s/rsb3mx41dfq4otl/warrior2.svg?raw=1",
+      difficulty: "Intermediate",
     },
     {
       id: 47,
@@ -792,6 +838,7 @@ export const seed = async (knex) => {
       url_png:
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/47_w2jsof.png",
       url_svg_alt: "https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1",
+      difficulty: "Advanced",
     },
     {
       id: 48,
@@ -809,6 +856,7 @@ export const seed = async (knex) => {
         "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/48_unoav6.png",
       url_svg_alt:
         "https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1",
+      difficulty: "Advanced",
     },
   ]);
 };

@@ -11,6 +11,7 @@ export const up = (knex) => {
     table.string("url_svg").nullable();
     table.string("url_png").nullable();
     table.string("url_svg_alt").nullable();
+    table.string("difficulty").notNullable(); // New column for difficulty
     table.timestamps(true, true); // Adds created_at and updated_at
   });
 };
