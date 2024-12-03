@@ -29,27 +29,9 @@ export const seed = async (knex) => {
     },
     {
       user_id: 1,
-      pose_id: 11,
-      status: "Completed",
-      updated_at: "2024-11-28 22:54:00",
-    },
-    {
-      user_id: 1,
       pose_id: 12,
       status: "Completed",
       updated_at: "2024-11-28 22:55:00",
-    },
-    {
-      user_id: 1,
-      pose_id: 31,
-      status: "Completed",
-      updated_at: "2024-11-28 22:56:00",
-    },
-    {
-      user_id: 1,
-      pose_id: 38,
-      status: "Completed",
-      updated_at: "2024-11-28 22:57:00",
     },
   ];
 
