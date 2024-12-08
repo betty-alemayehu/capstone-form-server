@@ -1,6 +1,15 @@
+//fileUploadMiddleware.js
+import fileUpload from "express-fileupload";
 import cloudinary from "../utils/cloudinary.js";
 
-// Middleware to handle file uploads with Cloudinary
+// Middleware to configure file uploads with express-fileupload
+export const configureFileUpload = fileUpload({
+  limits: { fileSize: 10 * 1024 * 1024 }, // Limit files to 10 MB
+  createParentPath: true, // Automatically create folders if needed
+  abortOnLimit: true, // Abort request if file exceeds size limit
+});
+
+// Middleware to handle file uploads and upload to Cloudinary
 export const handleFileUpload = async (req, res, next) => {
   try {
     if (!req.files || !req.files.image) {
