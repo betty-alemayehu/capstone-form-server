@@ -26,4 +26,4 @@ dist-ssr
 .env
 
 # Note: we don't want users to have access to other users photos unless they're friends in the app, so exclude the uploads folder?
-/uploads/
+# /uploads/
