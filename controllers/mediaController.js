@@ -2,6 +2,7 @@
 import db from "../db/dbConfig.js";
 import { Media } from "../models/Media.js";
 import { deleteFile } from "../utils/fileUtils.js";
+import cloudinary from "../utils/cloudinary.js";
 
 // Fetch all media for a specific user and pose
 export const fetchMediaByUserAndPose = async (req, res) => {
@@ -126,7 +127,8 @@ export const deleteMediaRecord = async (req, res) => {
     const { user_id, pose_id, public_id } = mediaRecord;
 
     // Delete the file from Cloudinary
-    await cloudinary.uploader.destroy(public_id);
+    const deleteResult = await cloudinary.uploader.destroy(public_id);
+    console.log("Cloudinary delete result:", deleteResult);
 
     // Delete the media record from the database
     await Media.delete(id);
