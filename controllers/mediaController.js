@@ -59,7 +59,8 @@ export const addMediaRecord = async (req, res) => {
       progression_id: progression.id,
       user_id,
       pose_id,
-      custom_media: req.filePath, // Relative file path from middleware
+      custom_media: req.filePath, // Use the Cloudinary URL
+      public_id: req.publicId, // Store the Cloudinary public ID for management
       created_at: new Date(),
       updated_at: new Date(),
     });
@@ -116,16 +117,16 @@ export const deleteMediaRecord = async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Fetch the media record to get the file path and associated progression details
+    // Fetch the media record to get the Cloudinary public ID
     const mediaRecord = await Media.getById(id);
     if (!mediaRecord) {
       return res.status(404).json({ error: "Media record not found." });
     }
 
-    const { user_id, pose_id, custom_media } = mediaRecord;
+    const { user_id, pose_id, public_id } = mediaRecord;
 
-    // Delete the file from the filesystem
-    await deleteFile(custom_media);
+    // Delete the file from Cloudinary
+    await cloudinary.uploader.destroy(public_id);
 
     // Delete the media record from the database
     await Media.delete(id);
